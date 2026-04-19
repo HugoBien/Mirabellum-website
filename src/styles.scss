@@ -7,6 +7,7 @@
 
 html {
   height: 100%;
+  background-color: rgb(39, 39, 39);
   @include mat.theme(
     (
       color: (
@@ -37,3 +38,16 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+  padding: 2rem 0;
+  color: white;
+}
+
+.home-container {
+  background-color: rgb(44, 44, 44);
+  height: 100%;
+}
