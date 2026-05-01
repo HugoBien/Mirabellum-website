@@ -1,0 +1,64 @@
+<div class="home-container">
+  <h1 class="title font-semibold text-white ">Nos événements</h1>
+
+  <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+
+    <!-- Carousel -->
+    <div class="carousel relative overflow-hidden rounded-2xl border-2 border-violet-600 bg-zinc-800">
+
+      <!-- Slide -->
+      @for (event of evenements; track event.titre; let i = $index) {
+        <div class="carousel-slide" [ngClass]="{ 'active': i === currentIndex() }">
+          <img [src]="event.imageUrl" [alt]="event.titre" class="w-full object-cover" />
+          <div class="p-6">
+            <p class="text-sm font-medium text-violet-400 mb-1">{{ event.date }}</p>
+            <h2 class="text-xl font-bold text-white mb-3">{{ event.titre }}</h2>
+            <p class="text-zinc-400 text-sm leading-relaxed">{{ event.description }}</p>
+          </div>
+        </div>
+      }
+
+      <!-- Prev button -->
+      <button
+        class="carousel-btn carousel-btn--prev"
+        (click)="prev()"
+        aria-label="Événement précédent"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+
+      <!-- Next button -->
+      <button
+        class="carousel-btn carousel-btn--next"
+        (click)="next()"
+        aria-label="Événement suivant"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="flex justify-center gap-2 mt-5">
+      @for (event of evenements; track event.titre; let i = $index) {
+        <button
+          class="dot"
+          [ngClass]="{ 'dot--active': i === currentIndex() }"
+          (click)="goTo(i)"
+          [attr.aria-label]="'Aller à l\'événement ' + (i + 1)"
+        ></button>
+      }
+    </div>
+
+    <!-- Counter -->
+    <p class="text-center text-sm text-zinc-500 mt-3">
+      {{ currentIndex() + 1 }} / {{ evenements.length }}
+    </p>
+
+  </div>
+</div>
