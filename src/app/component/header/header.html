@@ -1,10 +1,12 @@
 <header class="header-bar">
-  <div class="header-brand">
-    <div class="header-logo" aria-hidden="true"></div>
+  <a class="header-brand" routerLink="/">
+    <div class="header-logo" aria-hidden="true">
+      <img src="logo.png" alt="Mirabellum logo" class="header-logo-img" />
+    </div>
     <div>
       <div class="app-name">Mirabellum</div>
     </div>
-  </div>
+  </a>
 
   <nav class="header-nav">
     <a class="nav-link" routerLink="/" routerLinkActive="nav-link--active" [routerLinkActiveOptions]="{exact: true}">

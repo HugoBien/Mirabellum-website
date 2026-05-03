@@ -9,12 +9,23 @@
       <!-- Slide -->
       @for (event of evenements; track event.titre; let i = $index) {
         <div class="carousel-slide" [ngClass]="{ 'active': i === currentIndex() }">
-          <img [src]="event.imageUrl" [alt]="event.titre" class="w-full object-cover" />
-          <div class="p-6">
-            <p class="text-sm font-medium text-violet-400 mb-1">{{ event.date }}</p>
-            <h2 class="text-xl font-bold text-white mb-3">{{ event.titre }}</h2>
-            <p class="text-zinc-400 text-sm leading-relaxed">{{ event.description }}</p>
-          </div>
+          @if (event.lien) {
+            <a [href]="event.lien" target="_blank" rel="noopener noreferrer" class="block cursor-pointer">
+              <img [src]="event.imageUrl" [alt]="event.titre" class="w-full object-cover" />
+              <div class="p-6">
+                <p class="text-sm font-medium text-violet-400 mb-1">{{ event.date }}</p>
+                <h2 class="text-xl font-bold text-white mb-3">{{ event.titre }}</h2>
+                <p class="text-zinc-400 text-sm leading-relaxed">{{ event.description }}</p>
+              </div>
+            </a>
+          } @else {
+            <img [src]="event.imageUrl" [alt]="event.titre" class="w-full object-cover" />
+            <div class="p-6">
+              <p class="text-sm font-medium text-violet-400 mb-1">{{ event.date }}</p>
+              <h2 class="text-xl font-bold text-white mb-3">{{ event.titre }}</h2>
+              <p class="text-zinc-400 text-sm leading-relaxed">{{ event.description }}</p>
+            </div>
+          }
         </div>
       }
 
